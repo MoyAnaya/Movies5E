@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movies5E.MainPage"
+             Title="Registro de peliculas">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label Text="Registro de peliculas" FontSize="32" HorizontalOptions="Center" />
+            <Button Text="Agregar pelicula" FontSize="20" Clicked="OnAddMovieClicked"/>
+
+            <CollectionView x:Name="lista_peliculas">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Gray" CornerRadius="10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Titulo}" FontSize="20" FontAttributes="Bold"/>
+                                <Label Text="{Binding Genero}" FontSize="16"/>
+                                <Label Text="{Binding AnoLanzamiento}" FontSize="14" TextColor="Gray"/>
+                                <Image Source="{Binding ImagenUrl}" HeightRequest="200" Aspect="AspectFill" Margin="0,10"/>
+
+                                <HorizontalStackLayout>
+                                    <Button Text="Editar" FontSize="14" Clicked="OnEditMovieClicked" CommandParameter="{Binding .}" />
+                                    <Button Text="Eliminar" FontSize="14" Clicked="OnDeleteMovieClicked" CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movies5E.EditMoviePage"
+             Title="Editar pelicula">
+    <VerticalStackLayout>
+        <Label Text="Nombre"></Label>
+        <Entry x:Name="tituloEntry"></Entry>
+        <Label Text="Genero"></Label>
+        <Entry x:Name="generoEntry"></Entry>
+        <Label Text="Año de lanzamiento"></Label>
+        <Entry x:Name="anoEntry"></Entry>
+        <Label Text="Url de la imagen"></Label>
+        <Entry x:Name="UrlImagenEntry"></Entry>
+
+        <Button Text="Actualizar" Clicked="OnSaveClicked"></Button>
+        <Button Text="Cancelar" Clicked="OnCancelClicked"></Button>
+    </VerticalStackLayout>
+</ContentPage>
