@@ -26,7 +26,7 @@ public partial class EditMoviePage : ContentPage
         tituloEntry.Text = _movieToEdit.Titulo;
         generoEntry.Text = _movieToEdit.Genero;
         anoEntry.Text = _movieToEdit.AnoLanzamiento.ToString();
-        UrlImagenEntry.Text = _movieToEdit.UrlImagen ?? "";
+        UrlImagenEntry.Text = _movieToEdit.urlImagen ?? "";
     }
 
     private async void OnSaveClicked(object sender, EventArgs e)

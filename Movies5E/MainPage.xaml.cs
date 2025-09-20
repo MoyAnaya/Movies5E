@@ -76,71 +76,6 @@ public partial class MainPage : ContentPage
             await DisplayAlert("Error", $"Error de conexión: {ex.Message}", "OK");
         }
     }
-
-    private async Task AddMovieAsync(string titulo, string genero, int anoLanzamiento, string imagenUrl)
-    {
-        try
-        {
-            var movie = new
-            {
-                titulo,
-                genero,
-                anoLanzamiento,
-                imagenUrl
-            };
-
-            var json = JsonSerializer.Serialize(movie);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync($"{_baseUrl}/movies", content);
-            if (response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Éxito", "Película agregada correctamente", "OK");
-                await LoadMoviesAsync();
-            }
-            else
-            {
-                await DisplayAlert("Error", "No se pudo agregar la película", "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Error: {ex.Message}", "OK");
-        }
-    }
-
-    private async Task UpdateMovieAsync(int id, string titulo, string genero, int anoLanzamiento, string imagenUrl)
-    {
-        try
-        {
-            var movie = new
-            {
-                titulo,
-                genero,
-                anoLanzamiento,
-                imagenUrl
-            };
-
-            var json = JsonSerializer.Serialize(movie);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PutAsync($"{_baseUrl}/movies/{id}", content);
-            if (response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Éxito", "Película actualizada correctamente", "OK");
-                await LoadMoviesAsync();
-            }
-            else
-            {
-                await DisplayAlert("Error", "No se pudo actualizar la película", "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Error: {ex.Message}", "OK");
-        }
-    }
-
     private async Task DeleteMovieAsync(int id)
     {
         try
@@ -160,5 +95,11 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert("Error", $"Error: {ex.Message}", "OK");
         }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadMoviesAsync(); // 🔄 recarga las películas cada vez que vuelves
     }
 }
