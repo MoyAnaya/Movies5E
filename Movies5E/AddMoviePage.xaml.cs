@@ -7,53 +7,53 @@ namespace Movies5E;
 public partial class AddMoviePage : ContentPage
 {
     private readonly HttpClient _httpClient;
-    private readonly string _baseUrl = "https://1lh7j4n0-3000.usw3.devtunnels.ms/api"; // Cambia por tu URL
+    private readonly string _baseUrl = "https://1lh7j4n0-3000.usw3.devtunnels.ms/api"; 
 
     public AddMoviePage()
     {
-        InitializeComponent(); // ¡Ahora sí existe porque tienes el XAML!
+        InitializeComponent(); 
         _httpClient = new HttpClient();
     }
 
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        // Obtener datos de los Entry del XAML
+        
         string titulo = tituloEntry.Text?.Trim();
         string genero = generoPicker.SelectedItem?.ToString();
         string anoText = anoEntry.Text?.Trim();
         string urlImagen = UrlImagenEntry.Text?.Trim();
 
-        // Validaciones
+        
         if (string.IsNullOrEmpty(titulo))
         {
-            await DisplayAlert("Error", "El título es obligatorio", "OK");
+            await DisplayAlert("Error", "El tÃ­tulo es obligatorio", "OK");
             return;
         }
 
         if (string.IsNullOrEmpty(genero))
         {
-            await DisplayAlert("Error", "El género es obligatorio", "OK");
+            await DisplayAlert("Error", "El gÃ©nero es obligatorio", "OK");
             return;
         }
 
         if (!int.TryParse(anoText, out int anoLanzamiento) || anoLanzamiento < 1900)
         {
-            await DisplayAlert("Error", "Ingresa un año válido", "OK");
+            await DisplayAlert("Error", "Ingresa un aÃ±o vÃ¡lido", "OK");
             return;
         }
 
-        // Guardar película
+        
         await AddMovieAsync(titulo, genero, anoLanzamiento, urlImagen);
     }
 
     private async void OnCancelClicked(object sender, EventArgs e)
     {
         bool confirm = await DisplayAlert("Confirmar",
-            "¿Cancelar sin guardar?", "Sí", "No");
+            "Â¿Cancelar sin guardar?", "SÃ­", "No");
 
         if (confirm)
         {
-            await Navigation.PopAsync(); // Regresar a MainPage
+            await Navigation.PopAsync();
         }
     }
 
@@ -76,8 +76,8 @@ public partial class AddMoviePage : ContentPage
 
             if (response.IsSuccessStatusCode)
             {
-                await DisplayAlert("Éxito", "Película agregada correctamente", "OK");
-                await Navigation.PopAsync(); // Regresar a MainPage
+                await DisplayAlert("Ã‰xito", "PelÃ­cula agregada correctamente", "OK");
+                await Navigation.PopAsync(); 
             }
             else
             {
@@ -87,7 +87,7 @@ public partial class AddMoviePage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"Error de conexión: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"Error de conexiÃ³n: {ex.Message}", "OK");
         }
     }
 }
