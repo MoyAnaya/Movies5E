@@ -19,7 +19,7 @@ public partial class AddMoviePage : ContentPage
     {
         // Obtener datos de los Entry del XAML
         string titulo = tituloEntry.Text?.Trim();
-        string genero = generoEntry.Text?.Trim();
+        string genero = generoPicker.SelectedItem?.ToString();
         string anoText = anoEntry.Text?.Trim();
         string urlImagen = UrlImagenEntry.Text?.Trim();
 

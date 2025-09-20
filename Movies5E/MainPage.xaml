@@ -21,7 +21,7 @@
                                     <Image Source="{Binding urlImagen}" Aspect="AspectFit"/>
                                 </Grid>
 
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="12">
                                     <Button Text="Editar" FontSize="14" Clicked="OnEditMovieClicked" CommandParameter="{Binding .}" />
                                     <Button Text="Eliminar" FontSize="14" Clicked="OnDeleteMovieClicked" CommandParameter="{Binding .}" />
                                 </HorizontalStackLayout>

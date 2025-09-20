@@ -24,7 +24,7 @@ public partial class EditMoviePage : ContentPage
     private void LoadMovieData()
     {
         tituloEntry.Text = _movieToEdit.Titulo;
-        generoEntry.Text = _movieToEdit.Genero;
+        generoPicker.SelectedItem = _movieToEdit.Genero;
         anoEntry.Text = _movieToEdit.AnoLanzamiento.ToString();
         UrlImagenEntry.Text = _movieToEdit.urlImagen ?? "";
     }
@@ -33,7 +33,7 @@ public partial class EditMoviePage : ContentPage
     {
         // Obtener datos del formulario
         string titulo = tituloEntry.Text?.Trim();
-        string genero = generoEntry.Text?.Trim();
+        string genero = generoPicker.SelectedItem?.ToString();
         string anoText = anoEntry.Text?.Trim();
         string urlImagen = UrlImagenEntry.Text?.Trim();
 

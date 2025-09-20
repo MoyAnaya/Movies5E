@@ -3,17 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movies5E.AddMoviePage"
              Title="Agregar peliculas">
-    <VerticalStackLayout Padding="30,0" Spacing="25">
+    <VerticalStackLayout Padding="30,0" Spacing="15">
         <Label Text="Nombre"></Label>
         <Entry x:Name="tituloEntry"></Entry>
+        
         <Label Text="Genero"></Label>
-        <Entry x:Name="generoEntry"></Entry>
+        <Picker x:Name="generoPicker" Title="Selecciona un género">
+            <Picker.Items>
+                <x:String>Acción</x:String>
+                <x:String>Aventura</x:String>
+                <x:String>Comedia</x:String>
+                <x:String>Drama</x:String>
+                <x:String>Ciencia Ficción</x:String>
+                <x:String>Romance</x:String>
+                <x:String>Terror</x:String>
+                <x:String>Animación</x:String>
+            </Picker.Items>
+        </Picker>
+
         <Label Text="Año de lanzamiento"></Label>
-        <Entry x:Name="anoEntry"></Entry>
+        <Entry x:Name="anoEntry" Keyboard="Numeric"></Entry>
+        
         <Label Text="Url de la imagen"></Label>
         <Entry x:Name="UrlImagenEntry"></Entry>
 
-        <Button Text="Agregar" Clicked="OnSaveClicked"></Button>
-        <Button Text="Cancelar" Clicked="OnCancelClicked"></Button>
+        <HorizontalStackLayout Spacing="15">
+            <Button Text="Agregar" Clicked="OnSaveClicked" FontSize="20"></Button>
+            <Button Text="Cancelar" Clicked="OnCancelClicked" FontSize="20"></Button>
+        </HorizontalStackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>
